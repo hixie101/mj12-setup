@@ -3,6 +3,12 @@
 # Exit immediately if any command fails
 set -e
 
+echo "=== Pre 1: Mount CD drive ==="
+sudo mount /dev/cdrom /mnt
+
+echo "=== Pre 2: Install XE Guest Tools ==="
+sudo bash /mnt/Linux/./install.sh -y
+
 echo "=== Step 1: Downloading MJ12Node ==="
 wget -q --show-progress https://majestic12.co.uk/files/mj12node/mono/mj12node_linux_v1722_net471.tgz
 
