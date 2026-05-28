@@ -41,9 +41,11 @@ sleep $(shuf -i 43200-86400 -n 1)s && sudo reboot
 EOF
 sudo chmod +x /home/hixie/MJ12node/reboot.sh
 
-echo "=== Step 10: Injecting Cron job natively ==="
-# Appends the reboot task to your crontab without opening the interactive 'crontab -e' editor
-(crontab -l 2>/dev/null; echo "@reboot /home/hixie/MJ12node/reboot.sh") | crontab -
+echo "=== Step 10: Injecting Root Cron job natively ==="
+# Appends the reboot task directly into the root crontab without opening the text editor
+echo "@reboot /home/hixie/MJ12node/reboot.sh" | sudo tee -a /var/spool/cron/crontabs/root > /dev/null
+
+# Verifies the injection by listing the root crontab
 sudo crontab -l
 
 echo "=== Step 11: Creating startup.sh script ==="
