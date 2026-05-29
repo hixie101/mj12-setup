@@ -32,8 +32,6 @@ sudo apt update && sudo apt dist-upgrade -y
 echo "=== Step 9: Installing Mono ==="
 sudo apt install -y mono-complete
 
-# Note: Skipped manual run 'sudo mono ...Mono.exe' here so the script can finish installation autonomously.
-
 echo "=== Step 10: Installing and enabling Cron ==="
 sudo apt install -y nano cron
 sudo systemctl enable cron
@@ -83,4 +81,4 @@ sudo systemctl start mj12.service
 echo "=== Step 16: Verifying service status ==="
 sudo systemctl status mj12.service --no-pager
 
-echo "=== Setup complete! ==="
+echo "=== Setup complete! Please run sudo mono /home/hixie/MJ12node/MJ12nodeMono.exe manually to configure MJ12 client ==="
